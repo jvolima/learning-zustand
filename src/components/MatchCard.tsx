@@ -1,4 +1,6 @@
-import { Match } from "../App"
+import { useState } from "react";
+import { Match, Selection } from "../App"
+import { useBetStore } from "../store";
 
 interface MatchCardProps {
   match: Match;
@@ -6,6 +8,14 @@ interface MatchCardProps {
 
 export function MatchCard({ match }: MatchCardProps) {
   const [team1, team2] = match.name.split("vs");
+
+  const { betList, addToList } = useBetStore();
+
+  function isOnBetList(selection: Selection) {
+    const alreadyOnTheList = betList.find(bet => bet.id === selection.id);
+
+    return alreadyOnTheList ? true : false
+  }
 
   return (
     <div className="w-full">
@@ -20,7 +30,17 @@ export function MatchCard({ match }: MatchCardProps) {
             <h2>{market.name}</h2>
             <div className="mt-2 flex items-center justify-between">
               {market.selections.map(selection => (
-                <button className="py-2 px-4 flex flex-col justify-center items-center border rounded-md" key={selection.id}>
+                <button 
+                  className={`py-2 px-4 flex flex-col justify-center items-center border rounded-md ${isOnBetList(selection) === true && 'bg-green-400'}`} 
+                  key={selection.id}
+                  onClick={() => addToList({
+                    id: selection.id,
+                    name: selection.name,
+                    price: selection.price,
+                    bet_category_id: market.id,
+                    bet_category_name: market.name
+                  })}
+                >
                   <h3>{selection.name}</h3>
                   <span>{selection.price}</span>
                 </button>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { MatchCard } from "./components/MatchCard";
 import { api } from "./services/api";
 
-interface Selection {
+export interface Selection {
   id: string;
   name: string;
   price: number;
