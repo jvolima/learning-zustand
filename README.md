@@ -1,4 +1,9 @@
 # Aprendendo a utilizar o Zustand
+
+## Sobre a aplicação
+- Fiz uma aplicação bem simples com o intuito de aprender a utilizar o básico do Zustand, a aplicação consiste um site com uma listagem de partidas de futebol, e cada partida tem as suas apostas, o usuário pode adicionar uma aposta e ver a lista de todas suas apostas na sidebar, na sidebar também tem a opção de deletar uma aposta.
+- Basicamente a aplicação atinge o objetivo que é compartilhar um estado entre diversos componentes, que é a função do Zustand.
+
 ## O que é o Zustand e para que serve?
 - O Zustand é uma ferramenta que serve para compartilhar estados dentro de uma aplicaçã.
 - Parte do mesmo problema que o Redux e outras ferramentas buscam resolver.
